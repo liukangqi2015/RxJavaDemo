@@ -8,4 +8,10 @@
         <item>5.延迟创建Observable之timer()</item>
         <item>6.延迟创建Observable之interval()</item>
     </array>
+    <array name="transform_operator_subtitle">
+        <item>1.变换操作符之map()</item>
+        <item>2.变换操作符之flatMap()</item>
+        <item>1.变换操作符之concatMap()</item>
+        <item>1.变换操作符之buffer()</item>
+    </array>
 </resources>

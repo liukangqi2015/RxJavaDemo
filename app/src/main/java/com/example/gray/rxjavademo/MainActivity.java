@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     @Nullable
     @BindView(R.id.operator_btn)
     Button operator_btn;
+    @BindView(R.id.transform_btn)
+    Button transformBtn;
     private Unbinder unbinder;
 
     @Override
@@ -36,14 +38,17 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Optional
-    @OnClick({R.id.simple_activity_btn,R.id.operator_btn})
+    @OnClick({R.id.simple_activity_btn, R.id.operator_btn,R.id.transform_btn})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.simple_activity_btn:
                 startActivity(new Intent(this, SimpleActivity.class));
                 break;
             case R.id.operator_btn:
-                startActivity(new Intent(this,CreateOperatorActivity.class));
+                startActivity(new Intent(this, CreateOperatorActivity.class));
+                break;
+            case R.id.transform_btn:
+                startActivity(new Intent(this,TransformOperatorActivity.class));
                 break;
             default:
                 break;

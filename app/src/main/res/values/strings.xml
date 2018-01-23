@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">RxJavaDemo</string>
     <string name="create_operator_title">Observable创建方法多种方式：</string>
-
+    <string name="create_operator">RxJava之创建操作符</string>
+    <string name="simple">RxJava简单例子</string>
+    <string name="transform_operator">RxJava变换操作符</string>
+    <string name="transform_operator_title">Observable变化操作符：</string>
 </resources>

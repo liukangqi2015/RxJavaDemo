@@ -14,5 +14,11 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:text="RxJava操作符之创建操作符"/>
+    <Button
+        android:id="@+id/transform_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="RxJava操作符之变换操作符"/>
 
 </LinearLayout>
