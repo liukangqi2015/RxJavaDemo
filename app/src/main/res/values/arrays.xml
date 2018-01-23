@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="create_operator_subtitle">
+        <item>1.基本创建Observable之create()</item>
+        <item>2.快速创建Observable之just()</item>
+        <item>3.快速创建Observable之fromArray()</item>
+        <item>4.延迟创建Observable之defer()</item>
+        <item>5.延迟创建Observable之timer()</item>
+        <item>6.延迟创建Observable之interval()</item>
+    </array>
+</resources>

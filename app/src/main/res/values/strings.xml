@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">RxJavaDemo</string>
+    <string name="create_operator_title">Observable创建方法多种方式：</string>
+
+</resources>
