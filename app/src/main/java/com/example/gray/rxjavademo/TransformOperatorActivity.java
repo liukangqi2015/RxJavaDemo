@@ -78,6 +78,7 @@ public class TransformOperatorActivity extends AppCompatActivity {
                 concatMap();
                 break;
             case R.id.buffer_btn:
+                buffer();
                 break;
         }
     }
@@ -232,5 +233,43 @@ public class TransformOperatorActivity extends AppCompatActivity {
                 concatMap_btn.setText(sb);
             }
         });
+    }
+
+    /**
+     * 定期从 被观察者（Obervable）需要发送的事件中 获取一定数量的事件 & 放到缓存区中，最终发送
+     */
+    private void buffer() {
+        final StringBuilder sb=new StringBuilder();
+        // 被观察者 需要发送5个数字
+        Observable.just(1, 2, 3, 4, 5)
+                .buffer(3, 1) // 设置缓存区大小 & 步长
+                // 缓存区大小 = 每次从被观察者中获取的事件数量
+                // 步长 = 每次获取新事件的数量
+                .subscribe(new Observer<List<Integer>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+                    @Override
+                    public void onNext(List<Integer> stringList) {
+                        Log.d(TAG, " 缓存区里的事件数量 = " +  stringList.size());
+                        sb.append(" 缓存区里的事件数量 = " +  stringList.size()+"\n");
+                        for (Integer value : stringList) {
+                            Log.d(TAG, " 事件 = " + value);
+                            sb.append(" 事件 = " + value+"\n");
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "对Error事件作出响应" );
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "对Complete事件作出响应");
+                        buffer_btn.setText(sb);
+                    }
+                });
     }
 }
