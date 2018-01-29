@@ -21,6 +21,8 @@
             android:label="@string/create_operator"/>
         <activity android:name=".TransformOperatorActivity"
             android:label="@string/transform_operator"/>
+        <activity android:name=".UnionOperatorActivity"
+            android:label="@string/union_operator"/>
     </application>
 
 </manifest>

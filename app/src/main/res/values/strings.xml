@@ -4,5 +4,7 @@
     <string name="create_operator">RxJava之创建操作符</string>
     <string name="simple">RxJava简单例子</string>
     <string name="transform_operator">RxJava变换操作符</string>
-    <string name="transform_operator_title">Observable变化操作符：</string>
+    <string name="transform_operator_title">Observable变换操作符：</string>
+    <string name="union_operator">RxJava合并操作符</string>
+    <string name="union_operator_title">Observable合并操作符：</string>
 </resources>

@@ -11,7 +11,13 @@
     <array name="transform_operator_subtitle">
         <item>1.变换操作符之map()</item>
         <item>2.变换操作符之flatMap()</item>
-        <item>1.变换操作符之concatMap()</item>
-        <item>1.变换操作符之buffer()</item>
+        <item>3.变换操作符之concatMap()</item>
+        <item>4.变换操作符之buffer()</item>
+    </array>
+    <array name="union_operator_subtitle">
+        <item>1.合并操作符之concat（） / concatArray（）</item>
+        <item>2.合并操作符之merge（） / mergeArray（）</item>
+        <item>3.合并操作符之concatDelayError（） / mergeDelayError（）</item>
+        <item>4.合并操作符之Zip（）</item>
     </array>
 </resources>

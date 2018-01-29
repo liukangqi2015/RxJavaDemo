@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/TitleText"
+            android:text="@string/union_operator_title"/>
+        <TextView
+            android:id="@+id/subtitle_02"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubtitleText"
+            />
+        <Button
+            android:id="@+id/concat_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="concat（） / concatArray（）合并事件，串行执行"/>
+        <TextView
+            android:id="@+id/subtitle_03"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubtitleText"
+            />
+        <Button
+            android:id="@+id/merge_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="merge（） / mergeArray（）合并事件，并行执行"/>
+        <TextView
+            android:id="@+id/subtitle_04"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubtitleText"
+            />
+        <Button
+            android:id="@+id/concatDelayError_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="concatDelayError（） / mergeDelayError（）"/>
+        <TextView
+            android:id="@+id/subtitle_05"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubtitleText"
+            />
+        <Button
+            android:id="@+id/zip_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:text="Zip（）"/>
+    </LinearLayout>
+</ScrollView>
