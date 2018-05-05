@@ -52,6 +52,10 @@ public class CreateOperatorActivity extends AppCompatActivity {
     TextView subtitle06;
     @BindView(R.id.interval_btn)
     Button intervalBtn;
+    @BindView(R.id.subtitle_07)
+    TextView subtitle07;
+    @BindView(R.id.intervalRange_btn)
+    Button intervalRange_btn;
 
 
     private static final String TAG = "CreateOperatorActivity";
@@ -76,9 +80,10 @@ public class CreateOperatorActivity extends AppCompatActivity {
         subtitle04.setText(subtitles[3]);
         subtitle05.setText(subtitles[4]);
         subtitle06.setText(subtitles[5]);
+        subtitle07.setText(subtitles[6]);
     }
 
-    @OnClick({R.id.just_btn, R.id.fromArray_btn, R.id.defer_btn, R.id.timer_btn, R.id.interval_btn})
+    @OnClick({R.id.just_btn, R.id.fromArray_btn, R.id.defer_btn, R.id.timer_btn, R.id.interval_btn,R.id.intervalRange_btn})
     public void onViewClicked(View v) {
         switch (v.getId()) {
             case R.id.just_btn:
@@ -96,6 +101,9 @@ public class CreateOperatorActivity extends AppCompatActivity {
             case R.id.interval_btn:
                 interval();
                 break;
+            case R.id.intervalRange_btn:
+                intervalRange();
+                break;
             default:
                 break;
         }
@@ -103,6 +111,7 @@ public class CreateOperatorActivity extends AppCompatActivity {
 
     /**
      * 使用Just()快速创建Observable
+     * 最多只能发送10个参数
      */
     private void just() {
         Observable.just(1, 2, 3, 4).subscribe(new Observer<Integer>() {
@@ -132,6 +141,9 @@ public class CreateOperatorActivity extends AppCompatActivity {
 
     /**
      * 使用fromArray()快速创建Observable
+     *  注：
+     *  可发送10个以上参数
+     *  fromIterable（），直接发送 传入的集合List数据，会将数组中的数据转换为Observable对象
      */
     private void fromArray() {
         Observable.fromArray(nums).subscribe(new Observer<Integer>() {
@@ -265,6 +277,50 @@ public class CreateOperatorActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    /**
+     * intervalRange（）
+     * a. 发送的事件序列 = 从0开始、无限递增1的的整数序列
+     * b. 作用类似于interval（），但可指定发送的数据的数量
+     * range（）
+     * a. 发送的事件序列 = 从0开始、无限递增1的的整数序列
+     * b. 作用类似于intervalRange（），但区别在于：无延迟发送事件
+     */
+    private void intervalRange() {
+        // 参数1 = 事件序列起始点；
+        // 参数2 = 事件数量；
+        // 参数3 = 第1次事件延迟发送时间；
+        // 参数4 = 间隔时间数字；
+        // 参数5 = 时间单位
+        Observable.intervalRange(0,10,0,1,TimeUnit.SECONDS)
+                .subscribe(new Observer<Long>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(final Long value) {
+                        Log.d(TAG, "接收到了事件" + value);
+                        intervalRange_btn.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                intervalRange_btn.setText(String.valueOf(value));
+                            }
+                        });
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override

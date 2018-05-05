@@ -75,6 +75,17 @@
             android:id="@+id/interval_btn"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:text="每隔一秒递增1"/>
+            android:text="从0开始，每隔一秒递增1"/>
+        <TextView
+            android:id="@+id/subtitle_07"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/SubtitleText"
+            />
+        <Button
+            android:id="@+id/intervalRange_btn"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="从0开始，每隔一秒递增1,发送事件数量为10"/>
     </LinearLayout>
 </ScrollView>
