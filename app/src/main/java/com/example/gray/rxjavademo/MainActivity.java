@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
     Button transformBtn;
     @BindView(R.id.union_btn)
     Button unionBtn;
+    @BindView(R.id.polling_btn)
+    Button polling_btn;
     private Unbinder unbinder;
 
     @Override
@@ -40,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Optional
-    @OnClick({R.id.simple_activity_btn, R.id.operator_btn, R.id.transform_btn,R.id.union_btn})
+    @OnClick({R.id.simple_activity_btn, R.id.operator_btn, R.id.transform_btn,R.id.union_btn,R.id.polling_btn})
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.simple_activity_btn:
@@ -54,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.union_btn:
                 startActivity(new Intent(this,UnionOperatorActivity.class));
+                break;
+            case R.id.polling_btn:
+                startActivity(new Intent(this,PollingActivity.class));
                 break;
             default:
                 break;

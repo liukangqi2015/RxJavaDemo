@@ -7,24 +7,30 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="简单RxJava使用步骤"/>
+        android:text="@string/simple"/>
     <Button
         android:id="@+id/operator_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="RxJava操作符之创建操作符"/>
+        android:text="@string/create_operator"/>
     <Button
         android:id="@+id/transform_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="RxJava操作符之变换操作符"/>
+        android:text="@string/transform_operator"/>
     <Button
         android:id="@+id/union_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textAllCaps="false"
-        android:text="RxJava操作符之合并操作符"/>
+        android:text="@string/union_operator"/>
+    <Button
+        android:id="@+id/polling_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:text="@string/polling_title"/>
 
 </LinearLayout>

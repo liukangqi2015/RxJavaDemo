@@ -3,8 +3,9 @@
     <string name="create_operator_title">Observable创建方法多种方式：</string>
     <string name="create_operator">RxJava之创建操作符</string>
     <string name="simple">RxJava简单例子</string>
-    <string name="transform_operator">RxJava变换操作符</string>
+    <string name="transform_operator">RxJava之变换操作符</string>
     <string name="transform_operator_title">Observable变换操作符：</string>
-    <string name="union_operator">RxJava合并操作符</string>
+    <string name="union_operator">RxJava之合并操作符</string>
     <string name="union_operator_title">Observable合并操作符：</string>
+    <string name="polling_title">RxJava之网络请求轮询</string>
 </resources>
