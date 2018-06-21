@@ -28,7 +28,7 @@ import io.reactivex.schedulers.Schedulers;
  */
 
 public class UnionOperatorActivity extends AppCompatActivity {
-    private static final String TAG="UnionOperatorActivity";
+    private static final String TAG = "UnionOperatorActivity";
 
     @BindArray(R.array.union_operator_subtitle)
     String[] subtitles;
@@ -86,14 +86,14 @@ public class UnionOperatorActivity extends AppCompatActivity {
     /**
      * concat（） / concatArray（）
      * 组合多个被观察者一起发送数据，合并后 按发送顺序串行执行
-     *
+     * <p>
      * 二者区别：组合被观察者的数量，即concat（）组合被观察者数量≤4个，而concatArray（）则可＞4个
      */
     private void concatOperator() {
-        final StringBuilder sb=new StringBuilder();
+        final StringBuilder sb = new StringBuilder();
         // concat（）：组合多个被观察者（≤4个）一起发送数据
         // 注：串行执行
-        Observable.concat(Observable.just(1,2,3),Observable.just(4,5,6),Observable.just(7,8,9))
+        Observable.concat(Observable.just(1, 2, 3), Observable.just(4, 5, 6), Observable.just(7, 8, 9))
                 .subscribe(new Observer<Integer>() {
                     @Override
                     public void onSubscribe(Disposable d) {
@@ -102,7 +102,7 @@ public class UnionOperatorActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(Integer value) {
-                        Log.d(TAG, "接收到了事件"+ value  );
+                        Log.d(TAG, "接收到了事件" + value);
                         sb.append(value);
                         sb.append("\n");
                     }
@@ -170,7 +170,7 @@ public class UnionOperatorActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(Long value) {
-                        Log.d(TAG, "接收到了事件"+ value  );
+                        Log.d(TAG, "接收到了事件" + value);
                     }
 
                     @Override
@@ -190,44 +190,45 @@ public class UnionOperatorActivity extends AppCompatActivity {
     }
 
     /**
-     *concatDelayError（） / mergeDelayError（）
+     * concatDelayError（） / mergeDelayError（）
      * 若其中一个被观察者发出onError()，不会终止其他的被观察者发送事件。
      * concat与merge则会
      */
     private void concatDelayError() {
-                Observable.concatArrayDelayError(
-                        Observable.create(new ObservableOnSubscribe<Integer>() {
-                            @Override
-                            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+        Observable.concatArrayDelayError(
+                Observable.create(new ObservableOnSubscribe<Integer>() {
+                    @Override
+                    public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
 
-                                emitter.onNext(1);
-                                emitter.onNext(2);
-                                emitter.onNext(3);
-                                emitter.onError(new NullPointerException()); // 发送Error事件，因为使用了concatDelayError，所以第2个Observable将会发送事件，等发送完毕后，再发送错误事件
-                                emitter.onComplete();
-                            }
-                        }),
-                        Observable.just(4, 5, 6))
-                        .subscribe(new Observer<Integer>() {
-                            @Override
-                            public void onSubscribe(Disposable d) {
+                        emitter.onNext(1);
+                        emitter.onNext(2);
+                        emitter.onNext(3);
+                        emitter.onError(new NullPointerException()); // 发送Error事件，因为使用了concatDelayError，所以第2个Observable将会发送事件，等发送完毕后，再发送错误事件
+                        emitter.onComplete();
+                    }
+                }),
+                Observable.just(4, 5, 6))
+                .subscribe(new Observer<Integer>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
 
-                            }
-                            @Override
-                            public void onNext(Integer value) {
-                                Log.d(TAG, "接收到了事件"+ value  );
-                            }
+                    }
 
-                            @Override
-                            public void onError(Throwable e) {
-                                Log.d(TAG, "对Error事件作出响应");
-                            }
+                    @Override
+                    public void onNext(Integer value) {
+                        Log.d(TAG, "接收到了事件" + value);
+                    }
 
-                            @Override
-                            public void onComplete() {
-                                Log.d(TAG, "对Complete事件作出响应");
-                            }
-                        });
+                    @Override
+                    public void onError(Throwable e) {
+                        Log.d(TAG, "对Error事件作出响应");
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.d(TAG, "对Complete事件作出响应");
+                    }
+                });
     }
 
     /**
@@ -236,7 +237,7 @@ public class UnionOperatorActivity extends AppCompatActivity {
      */
     private void zip() {
 //        <-- 创建第1个被观察者 -->
-                Observable<Integer> observable1 = Observable.create(new ObservableOnSubscribe<Integer>() {
+        Observable<Integer> observable1 = Observable.create(new ObservableOnSubscribe<Integer>() {
             @Override
             public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
                 Log.d(TAG, "被观察者1发送了事件1");
@@ -257,7 +258,7 @@ public class UnionOperatorActivity extends AppCompatActivity {
         }).subscribeOn(Schedulers.io()); // 设置被观察者1在工作线程1中工作
 
 //        <-- 创建第2个被观察者 -->
-                Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
+        Observable<String> observable2 = Observable.create(new ObservableOnSubscribe<String>() {
             @Override
             public void subscribe(ObservableEmitter<String> emitter) throws Exception {
                 Log.d(TAG, "被观察者2发送了事件A");
@@ -282,32 +283,32 @@ public class UnionOperatorActivity extends AppCompatActivity {
 
 //        <-- 使用zip变换操作符进行事件合并 -->
 // 注：创建BiFunction对象传入的第3个参数 = 合并后数据的数据类型
-                Observable.zip(observable1, observable2, new BiFunction<Integer, String, String>() {
-                    @Override
-                    public String apply(Integer integer, String string) throws Exception {
-                        return  integer + string;
-                    }
-                }).subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-                        Log.d(TAG, "onSubscribe");
-                    }
+        Observable.zip(observable1, observable2, new BiFunction<Integer, String, String>() {
+            @Override
+            public String apply(Integer integer, String string) throws Exception {
+                return integer + string;
+            }
+        }).subscribe(new Observer<String>() {
+            @Override
+            public void onSubscribe(Disposable d) {
+                Log.d(TAG, "onSubscribe");
+            }
 
-                    @Override
-                    public void onNext(String value) {
-                        Log.d(TAG, "最终接收到的事件 =  " + value);
-                    }
+            @Override
+            public void onNext(String value) {
+                Log.d(TAG, "最终接收到的事件 =  " + value);
+            }
 
-                    @Override
-                    public void onError(Throwable e) {
-                        Log.d(TAG, "onError");
-                    }
+            @Override
+            public void onError(Throwable e) {
+                Log.d(TAG, "onError");
+            }
 
-                    @Override
-                    public void onComplete() {
-                        Log.d(TAG, "onComplete");
-                    }
-                });
+            @Override
+            public void onComplete() {
+                Log.d(TAG, "onComplete");
+            }
+        });
 
 
     }
